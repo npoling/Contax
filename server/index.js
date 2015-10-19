@@ -17,9 +17,15 @@ app.use(express.static(assetFolder))
 // This is for supporting browser history pushstate.
 // NOTE: Make sure this route is always LAST.
 //
+/*app.post('/addContact', function(req, res){
+  console.log(req);
+  console.log(res);
+})*/
+
 app.get('/*', function(req, res){
   res.sendFile( assetFolder + '/index.html' )
 })
+
 
 var port = process.env.PORT || 4000
 app.listen(port)

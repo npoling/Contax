@@ -12,6 +12,7 @@
   "dependencies": {
     "browserify-middleware": "^5.0.2",
     "express": "^4.12.4",
+    "jquery": "^2.1.4",
     "mithril": "^0.2.0"
   },
   "devDependencies": {

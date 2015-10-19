@@ -1,10 +1,28 @@
 <html>
 <head>
-  <title>My App</title>
+  <title>Contax: The App that Doesn't Do Anything</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
+<div class="welcome">
+  <h1>Contax</h1>
+  <h3>The #1 Contact App in the Address Book Game Today</h3>
+</div>
 
-<div id="app"></div>
+<div id="contacts">
+  <h2>Your Contacts:</h2>
+</div>
+
+<div class="addContact">
+  <h2>Add a Contact:</h2>
+    <form class="contactForm">
+      <input type="text" name="firstname" value="First name"></input><br>
+      <input type="text" name="lastname" value="Last name"></input><br>
+      <input type="text" name="phone" value="Phone number"></input><br>
+      <input type="text" name="email" value="E-mail"></input><br>
+      <button type="submit" class="submit">Submit:</button>
+    </form>
+  </div>
 
 <script src="/js/app-bundle.js"></script>
 </body>
