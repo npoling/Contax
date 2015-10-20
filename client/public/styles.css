@@ -28,15 +28,17 @@ h4 {
   font-size: 14px;
   width: 175px;
   padding: 5px;
-  border: 1px solid #8F8F8F;
-  display: inline;
+  display: inline-block;
   float: left;
+  vertical-align: text-top;
+  height: 180px;
 }
 
 .contactForm {
   padding: 7px ;
   border: 1px solid #8F8F8F;
   width: 175px; 
+  border-radius: 5px;
 }
 
 
@@ -53,7 +55,7 @@ button {
   line-height: 1.8;
   appearance: none;
   box-shadow: none;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 button:focus {

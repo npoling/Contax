@@ -31,24 +31,10 @@ var displayContacts = function () {
 }
 
 var deleteContact = function (index) {
-  $('#contacts').html('<h2>Your Contacts:</h2>');
-  var deleted = contacts.splice(index, 1);
-  console.log("deleted items", deleted);
-  console.log('contact object', contacts);
+  $('#contacts').html('<h2>Your Contacts:</h2>');  
+  var deleted = contacts.splice(index, 1);         
   currentContact = 0;
-  displayContacts();
-}
-
-var addListener = function () {
-  $('.delete').on('click',function () {
-    var index = $(this).attr('id');
-    deleteContact(index);
-    addListener();
-  });
-}
-
-if (contacts.length === 0) {
-  addListener();
+  displayContacts();                              
 }
 
 $(document).ready(function(){
@@ -60,22 +46,19 @@ $(document).ready(function(){
   $('.contactForm').on('submit', function (event){
     event.preventDefault(); 
     var contact = {};
-    console.log('click')
   
     contact.name = this.lastname.value + ', ' + this.firstname.value;
     contact.phone = this.phone.value;
     contact.email = this.email.value;
     contacts.push(contact);
-      console.log(contacts[0]);
 
     displayContacts();
   });
 
-  $('.delete').on('click',function () {
+  $('#contacts').on('click', 'button', function (event) {
     var index = $(this).attr('id');
     console.log("delete index", index);
     deleteContact(index);
-    addListener();
   });
 });
 
