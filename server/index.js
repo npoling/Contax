@@ -33,13 +33,8 @@ app.post('/addContact', function(req, res){
 });
 
 app.post('/updateContacts', function(req, res){
-    console.log("received contact object", req.body);
-
-  if (req.body.length === 0) {
-    storage = [];
-  } else {
+  console.log("server received updated contacts", req.body);
     storage = req.body; 
-  }
 });
 
 

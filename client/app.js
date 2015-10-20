@@ -6,37 +6,34 @@ var currentContact = 0;
 
 var displayContacts = function (contacts) {
   if (contacts.length) {
-    var loopLength = contacts.length 
-  } else {
-    loopLength = 1;
-  }
-
-  for (currentContact; currentContact < loopLength; currentContact++) {
-    $('#contacts').append('<div class="contact">\
-          <h4>Name:</h4> ' + contacts[currentContact].name + '\
-          <h4>Phone:</h4> <a href="tel:' + contacts[currentContact].phone +'">' + contacts[currentContact].phone + '</a>\
-          <h4>E-Mail:</h4> <a href="mailto:'+ contacts[currentContact].email+'"> '+ contacts[currentContact].email +'</a>\
-          <br><button class="delete" id="' + currentContact + '">Delete</button>\
-      </div><br>');
+    for (currentContact; currentContact < contacts.length; currentContact++) {
+      $('#contacts').append('<div class="contact">\
+            <h4>Name:</h4> ' + contacts[currentContact].name + '\
+            <h4>Phone:</h4> <a href="tel:' + contacts[currentContact].phone +'">' + contacts[currentContact].phone + '</a>\
+            <h4>E-Mail:</h4> <a href="mailto:'+ contacts[currentContact].email+'"> '+ contacts[currentContact].email +'</a>\
+            <br><button class="delete" id="' + currentContact + '">Delete</button>\
+        </div><br>');
+    }
   }
 };
 
 var deleteContact = function (index) {
   $('#contacts').html('<h2>Your Contacts:</h2>');  
-  var deleted = contacts.splice(index, 1);         
+  var deleted = contacts.splice(index, 1);   
+  
+  if (contacts.length === 0) {
+    contacts = [];
+  }      
   currentContact = 0;
-  displayContacts(contacts);  
-    console.log("called updateContact from delete contacks")
 
   var updatedContacts = JSON.stringify(contacts);
   updateContacts(updatedContacts);                       
+  displayContacts(contacts);  
 };
 
 var archiveContacts = function (data) {
   contacts = [];
   contacts = data;
-  console.log("archieved contacts called, data object is:", contacts);
-  return contacts;
 }
 
 var postContact = function (contact) {
@@ -61,8 +58,8 @@ var updateContacts = function (contacts) {
     type: 'POST',
     data: contacts,
     contentType: 'application/json',
-    success: function (contacts) {
-      console.log('contacts updates on server');
+    success: function () {
+      console.log('updateContacts received by server');
     },
     error: function (){
       console.error('Post error', error);
@@ -86,16 +83,18 @@ var getContacts = function () {
   });
 }
 
-
-
-
-
+var addListener = function() {
+  $('#contacts').on('click', 'button', function (event) {
+    var index = $(this).attr('id');
+    console.log("delete index", index);
+    deleteContact(index);
+  }); 
+}
 
 $(document).ready(function(){
   getContacts();
-  if (contacts.length) {
-    displayContacts(contacts);
-  }
+  displayContacts(contacts);
+
 
   $('.contactForm').on('submit', function (event){
     event.preventDefault(); 
@@ -104,19 +103,14 @@ $(document).ready(function(){
     contact.name = this.lastname.value + ', ' + this.firstname.value;
     contact.phone = this.phone.value;
     contact.email = this.email.value;
-    //contacts.push(contact);
+
     contact = JSON.stringify(contact);
     postContact(contact);
     getContacts();
     displayContacts(contacts);
-
   });
 
-  $('#contacts').on('click', 'button', function (event) {
-    var index = $(this).attr('id');
-    console.log("delete index", index);
-    deleteContact(index);
-  });
+  addListener();
 });
 
 
