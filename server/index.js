@@ -4,6 +4,7 @@ var app = express();
 var Path = require('path');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json());
+//var db = require('db');
 
 // Provide a browserified file at a specified path
 app.get('/js/app-bundle.js',
@@ -13,6 +14,7 @@ app.get('/js/app-bundle.js',
 var assetFolder = Path.resolve(__dirname, '../client/public')
 app.use(express.static(assetFolder))
 
+//temporary local storage object; replace with DB later;
 var storage = [];
 
 //server-side routes:
@@ -23,13 +25,12 @@ app.get('/index', function(req, res){
 app.get('/getContacts', function(req, res){
   console.log("received get request, sending storage object:", storage);
   res.send(storage);
+  //call database model method
 });
 
 app.post('/addContact', function(req, res){
-    console.log("received contact object", req.body);
-  //var contact = JSON.parse(req.body);
   storage.push(req.body);
-  res.send(console.log('received data on server'))
+  res.send(console.log('201: Added contact'))
 });
 
 app.post('/updateContacts', function(req, res){
