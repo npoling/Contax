@@ -1,26 +1,18 @@
 var $ = require('jquery');
 
-var contacts = [
-  { 
-    name: 'Alice, Bob',
-    phone: '508-555-1234',
-    email: 'alice@bob.com'
-  },
-  {
-    name: 'Person, Two',
-    phone: '555-123-4567',
-    email: 'person@gmail.com'
-  }
-];
-
+var contacts = [];
 var currentContact = 0;
 
-if (contacts.length === 0) {
-  addListener();
-}
 
 var displayContacts = function () {
-  for (currentContact; currentContact < contacts.length; currentContact++) {
+
+  if (contacts.length) {
+    var loopLength = contacts.length 
+  } else {
+    loopLength = 1;
+  }
+
+  for (currentContact; currentContact < loopLength; currentContact++) {
     $('#contacts').append('<div class="contact">\
         <div class="name">\
           <h4>Name:</h4> ' + contacts[currentContact].name +  '\
@@ -55,18 +47,26 @@ var addListener = function () {
   });
 }
 
+if (contacts.length === 0) {
+  addListener();
+}
 
 $(document).ready(function(){
-  displayContacts();
+
+  if (contacts.length) {
+    displayContacts();
+  }
 
   $('.contactForm').on('submit', function (event){
     event.preventDefault(); 
     var contact = {};
+    console.log('click')
   
     contact.name = this.lastname.value + ', ' + this.firstname.value;
     contact.phone = this.phone.value;
     contact.email = this.email.value;
     contacts.push(contact);
+      console.log(contacts[0]);
 
     displayContacts();
   });
