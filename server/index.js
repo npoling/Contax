@@ -22,8 +22,23 @@ app.use(express.static(assetFolder))
   console.log(res);
 })*/
 
+//server-side routes:
+app.get('/index', function(req, res){
+  res.sendFile(assetFolder + '/index.html');
+});
+
+app.get('/getContacts', function(req, res){
+
+});
+
+app.post('/addContact', function(req, res){
+
+});
+
+
+
 app.get('/*', function(req, res){
-  res.sendFile( assetFolder + '/index.html' )
+  res.sendFile( assetFolder + '/404.html' )
 })
 
 

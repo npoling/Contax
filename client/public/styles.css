@@ -2,10 +2,12 @@ h1 {
   font-family: helvetica;
   color: white;
   background-color: black;
+  width: 90%;
 }
 
 h2 {
   font-family: helvetica;
+  padding-bottom: 2px;
 }
 
 h3 {
@@ -15,10 +17,55 @@ h3 {
   color: #8F8F8F;
 }
 
+h4 {
+  margin: 1px;
+  padding: 0px;
+  border: 0px;
+}
+
 .contact {
   font-family: helvetica;
   font-size: 14px;
-  width: 50%;
+  width: 175px;
   padding: 5px;
   border: 1px solid #8F8F8F;
+  display: inline;
+  float: left;
+}
+
+.contactForm {
+  padding: 7px ;
+  border: 1px solid #8F8F8F;
+  width: 175px; 
+}
+
+
+button {
+  color: #fff;
+  background-color: #8F8F8F;
+  text-shadow: -1px 1px #417cb8;
+  border: none;  
+  display: inline-block;
+  margin: 5 10px 0 0;
+  padding: 15px 45px;
+  font-size: 15px;
+  font-family: helvetica;
+  line-height: 1.8;
+  appearance: none;
+  box-shadow: none;
+  border-radius: 10px;
+}
+
+button:focus {
+  outline: none
+}
+
+button.hover {
+  background-color: #8F8F8F;
+  text-shadow: -1px 1px #27496d;
+}
+
+button.active {
+  background-color: #8F8F8F;
+  text-shadow: -1px 1px #193047;
 }
