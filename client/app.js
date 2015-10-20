@@ -7,18 +7,26 @@ var currentContact = 0;
 var displayContacts = function (contacts) {
   if (contacts.length) {
     for (currentContact; currentContact < contacts.length; currentContact++) {
-      $('#contacts').append('<div class="contact">\
-            <h4>Name:</h4> ' + contacts[currentContact].name + '\
+      $('#contacts').append('<div class="row" class="contact">\
+        <div class="col s6 m3" >\
+          <div class="card blue-grey darken-1">\
+            <div class="card-content white-text">\
+              <span class="card-title"> ' + contacts[currentContact].name + '</span>\
+            </div>\
+            <div class="card-action">\
             <h4>Phone:</h4> <a href="tel:' + contacts[currentContact].phone +'">' + contacts[currentContact].phone + '</a>\
             <h4>E-Mail:</h4> <a href="mailto:'+ contacts[currentContact].email+'"> '+ contacts[currentContact].email +'</a>\
-            <br><button class="delete" id="' + currentContact + '">Delete</button>\
-        </div><br>');
+            <br><br><button class="delete" id="' + currentContact + '">Delete</button>\
+            </div>\
+          </div>\
+        </div>\
+      </div>');
     }
   }
 };
 
 var deleteContact = function (index) {
-  $('#contacts').html('<h2>Your Contacts:</h2>');  
+  $('#contacts').html('<h5><u>Your Contacts:</u></h5>');  
   var deleted = contacts.splice(index, 1);   
   
   if (contacts.length === 0) {

@@ -1,16 +1,26 @@
 <html>
 <head>
   <title>Contax: The App that Doesn't Do Anything Useful</title>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+  <!--<link rel="stylesheet" type="text/css" href="styles.css"-->
+  <!--Import Google Icon Font-->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css"  media="screen,projection"/>
 </head>
+
 <body>
-<div class="header">
-  <h1>Contax</h1>
-  <h3>The #1 Contact App in the Address Book Game Today</h3>
+<nav class="orange accent-2">
+<div class="navWrapper orange accent-2">
+  <h1 class="brand-logo">Contax</h1>
+  <ul id="nav-mobile orange accent-2" class="right hide-on-med-and-down orange accent-2">
+        <li><a href="about.html">The #1 Contact App in the Address Book Game Today</a></li>
+      </ul>
 </div>
+</nav>
+<br><br>
 
 <div class="addContact">
-  <h2>Add a Contact:</h2>
+  <h5 class="col s6 m3"><u>Add a Contact:</u></h5>
     <form class="contactForm">
       <input type="text" name="firstname" placeholder="First name"></input><br>
       <input type="text" name="lastname" placeholder="Last name"></input><br>
@@ -21,10 +31,12 @@
 </div>
 
 <div id="contacts">
-  <h2>Your Contacts:</h2>
+  <h5><u>Your Contacts:</u></h5>
 </div>
 
 
 <script src="/js/app-bundle.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+
 </body>
 </html>
